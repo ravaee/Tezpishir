@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<% var rootPath = './'; %>
+<html lang="en">
+    <head>
+        <% include ../../partials/head %>
+    </head>
+	<body class="primary_color_background">
+		<div class="container">
+			<div class="row main">
+				<div class="panel-heading">
+	               <div class="panel-title text-center">
+	               		<h1 class="title">Tezpishir Admin Panel</h1>
+	               		<hr class="semi_hr"/>
+	               	</div>
+	            </div> 
+				<div class="col-xs-10 col-md-6 col-lg-4 center_col">
+					<form class="form-horizontal" method="post" action="./login">
+						<div class="form-group">
+							<label for="username" class="cols-sm-2 control-label">Username</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username"/>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="password" class="cols-sm-2 control-label">Password</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group ">
+							<input type="submit" value="Sign in" class="btn btn-warning btn-lg btn-block login-button"/>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+        <footer>
+            <% include ../../partials/footer %>
+        </footer>
+	</body>
+</html>

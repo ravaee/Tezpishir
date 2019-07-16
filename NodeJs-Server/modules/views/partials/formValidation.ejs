@@ -1,0 +1,14 @@
+<% if(errors){%>
+<div class="alert alert-danger">
+    <strong>Error!</strong> <%=message%>
+    <ul>
+        <%errors.map((error) => {%>
+            <li><%=error%></li>
+        <%})%>
+    </ul>
+</div>
+<%}else if(message){%>
+<div class="alert alert-success">
+    <strong>Done!</strong> <%= message %>
+</div>
+<%}%>

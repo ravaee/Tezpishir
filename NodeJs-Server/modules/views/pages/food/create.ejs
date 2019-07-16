@@ -1,0 +1,65 @@
+<!-- views/pages/index.ejs -->
+<% var rootPath = '../'; %>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <% include ../../partials/head %>
+    </head>
+    <body >
+        <header>
+            <% include ../../partials/adminHeader %>
+        </header>
+        <div class="container">
+            <div class="row">  
+                <div class="col-xs-12 center_col">     
+                    <h1>Add a Food</h1>
+                    <hr/>
+                    <% include ../../partials/formValidation %>
+                    <div class="col-md-6">
+                        <form action="/food/create" class="col" method="post" enctype="multipart/form-data">
+                            <label>Enter Food Name</label>
+                            <input type="text" class="form-control" placeholder="Enter Food Name" name="name" >                        
+                            <br/>
+                            <label>Enter Food ingredients</label>
+                            <textarea type="text" class=" form-control text_area" placeholder="Enter Food ingredients" name="ingredients" ></textarea>                        
+                            <br/>
+                            <label>Enter Food recipes</label>
+                            <textarea type="text" class="form-control text_area" placeholder="Enter Food recipes" name="recipes" ></textarea>                        
+                            <br/>
+                            <label>Enter Food preparing time</label>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <input id="time" type="number" class="form-control" placeholder="Enter Food preparing time" name="time" />                   
+                                </div>
+                                <div class="col-xs-6">
+                                    <label style="color:maroon" for="time">time per minute</label>
+                                </div>
+                            </div>
+                            <br/>
+                            <label>Choose Food group</label>
+                            <select class="form-control" name="group_id" id="sel1">
+                            <%if(models){%>
+                                <%models.map((model) => {%>
+                                <option value=<%=model.id%>><%=model.name%></option>
+                                <%})%>
+                            <%}else{%>
+                            <%}%>
+                            </select>
+                            <br/>
+                            <label>Enter Food`s owner id</label>
+                            <input type="text" class="form-control" value="5d083e6dd7f2b72bd4289b72" placeholder="By Default it is Mohamad Ravaei)" name="user_id" />                     
+                            <br/>
+                            <label>Upload Food Picture</label>
+                            <input type="file" accept="image/*" name="photo" >
+                            <br/>
+                            <input type="submit" class="btn btn-success" value="upload">
+                        </form>
+                    </div>
+                </div>              
+            </div>
+        </div>
+        <footer>
+            <% include ../../partials/footer %>
+        </footer>
+    </body>
+</html>
