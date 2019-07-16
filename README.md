@@ -4,11 +4,9 @@ Tezpishir is a open-source social media designed by **Mohamad Ravaei** it lets c
 
 
 # Files
-
 This project is created by the best practice of Android development libraries.
-Dependency Injection system by: **Dagger 2**.
-Restful communication platform: **Retrofit2**, **RxJava**.
-Server-Side implemented by **NodeJs** and **Express**.
-Server-Side database: **MongoDB**
-Authorization System: **JWT**, **Google OAuth2**
- 
+ - Dependency Injection system by: **Dagger 2**.
+ - Restful communication platform: **Retrofit2**, **RxJava**.
+ - Server-Side implemented by **NodeJs** and **Express**.
+ - Server-Side database: **MongoDB**
+ - Authorization System: **JWT**, **Google OAuth2**
