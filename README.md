@@ -1,6 +1,6 @@
 # Welcome to Tezpishir!
 
-Tezpishir is a open-source social media designed by **Mohamad Ravaei** it lets chefs to publish their own recipes and their ingredients of foods between other users the application is under the construction and it is going to complete as soon as it is possible.
+Tezpishir is an open-source social media designed by **Mohamad Ravaei** it lets chefs to publish their own recipes and their ingredients of foods between other users the application is under the construction and it is going to complete as soon as it is possible.
 
 
 # Files
