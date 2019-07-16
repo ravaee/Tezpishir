@@ -1,0 +1,67 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="5dp"
+    app:cardCornerRadius="0dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:layout_height="150dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_android"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"/>
+
+        <ImageView
+            android:id="@+id/group_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:scaleType="centerCrop"
+            android:contentDescription="TODO" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="67dp"
+            android:background="@color/smokyGlass"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/group_name_text"
+                android:layout_width="match_parent"
+                android:textColor="@color/fontColor"
+                android:textSize="24sp"
+                android:text="Salmon and Fish"
+                android:layout_height="40dp"/>
+
+            <TextView
+                android:id="@+id/group_food_count_text"
+                android:layout_width="match_parent"
+                android:layout_height="27dp"
+                android:textColor="@color/fontColor"
+                android:textSize="10sp"
+                android:text="0 order"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

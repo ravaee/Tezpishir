@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/smokyGlass"
+    android:orientation="vertical"
+    android:layout_height="100dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/food_name"
+            android:textSize="20sp"
+            android:gravity="center_vertical|start"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textColor="@color/fontColor"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/food_time"
+            android:textSize="17sp"
+            android:drawableStart="@drawable/ic_time"
+            android:drawableTint="@color/fontColorLight"
+            android:drawablePadding="5dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:gravity="center_vertical|start"
+            android:textColor="@color/fontColorLight"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/food_user_name"
+            android:textSize="17sp"
+            android:drawableStart="@drawable/ic_person"
+            android:drawableTint="@color/fontColorLight"
+            android:drawablePadding="5dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:gravity="center_vertical|start"
+            android:textColor="@color/fontColorLight"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+
+</LinearLayout>

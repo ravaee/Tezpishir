@@ -1,0 +1,7 @@
+<resources>
+    <style name="CollapsedAppBar" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/fontColor</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+</resources>

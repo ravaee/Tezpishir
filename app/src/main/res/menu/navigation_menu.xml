@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_fav"
+            android:icon="@drawable/ic_favorite"
+            android:title="My Favorites" />
+        <item
+            android:id="@+id/nav_add"
+            android:icon="@drawable/ic_logo"
+            android:title="Add a Food" />
+        <item
+            android:id="@+id/nav_main"
+            android:icon="@drawable/ic_person"
+            android:title="Your Foods" />
+        <item
+            android:id="@+id/nav_edit"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Edit Profile" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share Yourself" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_sentiment"
+                android:title="Logout" />
+        </menu>
+    </item>
+
+</menu>

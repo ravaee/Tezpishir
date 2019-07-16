@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#DF4935</color>
+    <color name="colorPrimaryDark">#962516</color>
+    <color name="colorAccent">#f5a50a</color>
+    <color name="fontColor">#FFFFFF</color>
+    <color name="fontColorLight">#adffffff</color>
+    <color name="fontColorDark">#ad4d4d4d</color>
+    <color name="smokyGlass">#87000000</color>
+    <color name="black">#f2131313</color>
+    <color name="gray">#C4C4C4</color>
+    <color name="lightgray">#E5E5E5</color>
+    <color name="green">#1CB119</color>
+
+
+
+</resources>
