@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -32,6 +34,10 @@ import com.git.ravaee.tezpishir.model.Group;
 import com.git.ravaee.tezpishir.model.response.FoodResponse;
 import com.git.ravaee.tezpishir.model.response.GroupResponse;
 import com.git.ravaee.tezpishir.root.App;
+import com.git.ravaee.tezpishir.viewModel.food.FoodViewModel;
+import com.git.ravaee.tezpishir.viewModel.food.FoodViewModelFactory;
+import com.git.ravaee.tezpishir.viewModel.group.GroupViewModel;
+import com.git.ravaee.tezpishir.viewModel.group.GroupViewModelFactory;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
@@ -161,54 +167,19 @@ public class GroupActivity extends AppCompatActivity
 
     void getGroupList(){
 
-        app.getGroupService().getGroupList(app.getSession().getToken())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<GroupResponse>() {
+        GroupViewModel groupViewModel = ViewModelProviders.of(this, new GroupViewModelFactory(app)).get(GroupViewModel.class);
+        groupViewModel.getGroupList().observe(this,groupResponse -> {
 
-                    @Override
-                    public void onCompleted() {}
+            refreshLayout.setRefreshing(false);
+            updateUI(groupResponse.getGroups());
 
-                    @Override
-                    public void onError(Throwable e) {
-                        refreshLayout.setRefreshing(false);
-                        Log.e(TAG, "Unable to submit post to API." + e);
-                    }
-
-                    @Override
-                    public void onNext(GroupResponse groupResponse) {
-                        refreshLayout.setRefreshing(false);
-                        updateUI(groupResponse.getGroups());
-                        Log.i(TAG, "post submitted to API." );
-                    }
-                });
+        });
     }
 
     void getFoodList(Group group){
-        app.getFoodService().getFoodList(app.getSession().getToken(),group.getId(),1,10)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<FoodResponse>() {
-                    @Override
-                    public void onCompleted() {
 
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.e(TAG, "Unable to submit post to API." + e);
-                        Toast.makeText(app.getApplicationContext(), "Check your Internet Connection", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onNext(FoodResponse foodResponse) {
-                        if(foodResponse.getErrors().size() > 0){
-                            Toast.makeText(app.getApplicationContext(), foodResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                        updateActivity(foodResponse.getFoodBind(),group);
-                    }
-                });
+        FoodViewModel foodViewModel = ViewModelProviders.of(this, new FoodViewModelFactory(app)).get(FoodViewModel.class);
+        foodViewModel.getFoodList(group,1,10).observe(this,foodResponse -> updateActivity(foodResponse.getFoodBind(),group));
     }
 
 }

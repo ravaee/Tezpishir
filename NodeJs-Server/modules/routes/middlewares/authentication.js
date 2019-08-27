@@ -3,6 +3,8 @@ const JWT = require('jsonwebtoken')
 const User = require('../../models/user')
 const fs = require('fs')
 var path = require('path')
+const bodyParser = require('body-parser')
+const express = require('express')
 
 module.exports = new class Auth{
 
@@ -24,7 +26,21 @@ module.exports = new class Auth{
         }
     }
 
+    userIsOwner(req,res,next){
+
+        console.log(req.body)
+        
+        return new Response(res,[],["Unauthorized"],401,false,"Access Denied To This Information")
+        if(req.user._id != ""){
+            
+        }else{
+            //next()
+        }
+        return
+    }
+
     authorize(req,res,next) {
+
         let token = req.headers['x-access-token']
         if (token) {  
             const public_key = fs.readFileSync(path.resolve('modules/protectedFiles/public.pem'), 'utf8')
@@ -52,6 +68,7 @@ module.exports = new class Auth{
                     
                     if (user) {
                         req.user = user
+
                         next()
                         return
 

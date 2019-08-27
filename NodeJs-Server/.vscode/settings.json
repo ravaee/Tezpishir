@@ -1,4 +1,5 @@
 {
     "editor.fontLigatures": true,
-    "editor.fontFamily": "hack"
+    "editor.fontFamily": "hack",
+    "files.autoSave": "afterDelay"
 }

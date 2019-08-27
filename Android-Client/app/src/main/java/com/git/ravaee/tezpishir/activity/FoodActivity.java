@@ -6,10 +6,16 @@ import android.os.Bundle;
 import com.git.ravaee.tezpishir.model.Food;
 import com.git.ravaee.tezpishir.model.response.FoodResponse;
 import com.git.ravaee.tezpishir.root.App;
+import com.git.ravaee.tezpishir.viewModel.food.FoodViewModel;
+import com.git.ravaee.tezpishir.viewModel.food.FoodViewModelFactory;
+import com.git.ravaee.tezpishir.viewModel.user.UserViewModel;
+import com.git.ravaee.tezpishir.viewModel.user.UserViewModelFactory;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.widget.NestedScrollView;
+import androidx.lifecycle.ViewModelProviders;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx.Subscriber;
@@ -113,29 +119,19 @@ public class FoodActivity extends AppCompatActivity {
 
     void getFoodDetails(Food food){
 
-        app.getFoodService().getSingleFood(app.getSession().getToken(),food.getId())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<FoodResponse>() {
-                    @Override
-                    public void onCompleted() {}
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.e(TAG, "Unable to submit post to API." + e);
-                        Toast.makeText(app.getApplicationContext(), "Check your Internet Connection", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onNext(FoodResponse foodResponse) {
-                        if(foodResponse.getErrors().size() > 0){
-                            Toast.makeText(app.getApplicationContext(), foodResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                        updateDynamicUI(foodResponse.getFoodBind().getFood());
-                    }
-                });
+        FoodViewModel foodViewModel = ViewModelProviders.of(this,new FoodViewModelFactory(app)).get(FoodViewModel.class);
+        foodViewModel.getFoodDetails(food).observe(this,foodResponse -> {
+            if(foodResponse.getErrors().size() > 0){
+                Toast.makeText(app.getApplicationContext(), foodResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            updateDynamicUI(foodResponse.getFoodBind().getFood());
+        });
     }
+
+
+
+
 
 
 

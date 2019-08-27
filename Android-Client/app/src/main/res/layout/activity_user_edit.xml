@@ -1,194 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="0dp"
-    android:fitsSystemWindows="true"
-    android:background="@color/colorPrimary"
-    tools:context=".activity.UserEditActivity">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:elevation="10dp"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="0dp"
+        android:fitsSystemWindows="true"
+        android:background="@color/colorPrimary"
+        tools:context=".activity.UserEditActivity">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/back_button"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_gravity="start"
-            android:background="@drawable/ic_back" />
 
-        <TextView
-            android:id="@+id/toolbar_title"
-            android:layout_width="wrap_content"
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/edit_your_profile"
-            android:textColor="@color/fontColor"
-            android:textStyle="normal"
-            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-            android:layout_gravity="center" />
+            android:background="?attr/colorPrimary"
+            android:elevation="10dp"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </androidx.appcompat.widget.Toolbar>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/back_button"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="start"
+                android:background="@drawable/ic_back" />
 
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/fontColor"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edit_your_profile"
+                android:textColor="@color/fontColor"
+                android:textStyle="normal"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                android:layout_gravity="center" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+        </androidx.appcompat.widget.Toolbar>
 
-            <RelativeLayout
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/fontColor"
+            app:layout_constraintBottom_toTopOf="@+id/updateButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@color/gray">
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="35dp"
-                    android:contentDescription="@string/app_name"
-                    app:srcCompat="@drawable/ic_camera" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@color/gray">
+
+                    <ImageView
+                        android:id="@+id/profile_image"
+                        android:scaleType="centerCrop"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/todo" />
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/add_picture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/fab_margin"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        app:fabSize="normal"
+                        app:borderWidth="0dp"
+                        app:backgroundTint="@color/colorPrimary"
+                        app:srcCompat="@drawable/ic_camera" />
+
+                </RelativeLayout>
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="130dp"
-                    android:text="@string/add_your_picture"
-                    android:textAlignment="center"
-                    android:textColor="@color/lightgray" />
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/radius_light_corner_right"
+                    android:padding="9dp"
+                    android:paddingStart="65dp"
+                    android:text="@string/general"
+                    android:textColor="@color/fontColor"
+                    android:textSize="17sp" />
 
-            </RelativeLayout>
+                <EditText
+                    android:id="@+id/user_name_text"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/radius_edit_text"
+                    android:hint="@string/enter_your_fullname"
+                    android:padding="10dp"
+                    android:textColor="@color/fontColorDark"
+                    android:textColorHint="@color/gray"
+                    android:textSize="15sp" />
 
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/radius_light_corner_right"
-                android:padding="9dp"
-                android:paddingStart="65dp"
-                android:text="@string/general"
-                android:textColor="@color/fontColor"
-                android:textSize="17sp" />
+                <EditText
+                    android:id="@+id/phone_number_text"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/radius_edit_text"
+                    android:hint="@string/phone_number_for_hiring_you"
+                    android:padding="10dp"
+                    android:textColor="@color/fontColorDark"
+                    android:textColorHint="@color/gray"
+                    android:textSize="15sp" />
 
-            <EditText
-                android:id="@+id/user_name_text"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/radius_edit_text"
-                android:hint="@string/enter_your_fullname"
-                android:padding="10dp"
-                android:textColor="@color/fontColorDark"
-                android:textColorHint="@color/gray"
-                android:textSize="15sp" />
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/radius_light_corner_right"
+                    android:padding="9dp"
+                    android:paddingStart="50dp"
+                    android:text="@string/experience"
+                    android:textColor="@color/fontColor"
+                    android:textSize="17sp" />
 
-            <EditText
-                android:id="@+id/phone_number_text"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/radius_edit_text"
-                android:hint="@string/phone_number_for_hiring_you"
-                android:padding="10dp"
-                android:textColor="@color/fontColorDark"
-                android:textColorHint="@color/gray"
-                android:textSize="15sp" />
+                <EditText
+                    android:id="@+id/experience_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/radius_edit_text"
+                    android:gravity="top"
+                    android:hint="@string/experience_text"
+                    android:inputType="text|textMultiLine"
+                    android:padding="10dp"
+                    android:textColor="@color/fontColorDark"
+                    android:textColorHint="@color/gray"
+                    android:textSize="15sp" />
 
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/radius_light_corner_right"
-                android:padding="9dp"
-                android:paddingStart="50dp"
-                android:text="@string/experience"
-                android:textColor="@color/fontColor"
-                android:textSize="17sp" />
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/radius_light_corner_right"
+                    android:padding="9dp"
+                    android:paddingStart="40dp"
+                    android:text="@string/area_of_service"
+                    android:textColor="@color/fontColor"
+                    android:textSize="17sp" />
 
-            <EditText
-                android:id="@+id/experience_text"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/radius_edit_text"
-                android:gravity="top"
-                android:hint="@string/experience_text"
-                android:inputType="text|textMultiLine"
-                android:padding="10dp"
-                android:textColor="@color/fontColorDark"
-                android:textColorHint="@color/gray"
-                android:textSize="15sp" />
-
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/radius_light_corner_right"
-                android:padding="9dp"
-                android:paddingStart="40dp"
-                android:text="@string/area_of_service"
-                android:textColor="@color/fontColor"
-                android:textSize="17sp" />
-
-            <EditText
-                android:id="@+id/area_of_service_text"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/radius_edit_text"
-                android:gravity="top"
-                android:hint="@string/area_of_your_service_text"
-                android:inputType="text|textMultiLine"
-                android:padding="10dp"
-                android:textColor="@color/fontColorDark"
-                android:textColorHint="@color/gray"
-                android:textSize="15sp" />
+                <EditText
+                    android:id="@+id/area_of_service_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/radius_edit_text"
+                    android:gravity="top"
+                    android:hint="@string/area_of_your_service_text"
+                    android:inputType="text|textMultiLine"
+                    android:padding="10dp"
+                    android:textColor="@color/fontColorDark"
+                    android:textColorHint="@color/gray"
+                    android:textSize="15sp" />
 
 
-        </LinearLayout>
+            </LinearLayout>
 
-    </ScrollView>
+        </ScrollView>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:padding="0dp"
-        android:layout_margin="0dp"
-        android:background="@color/green"
-        android:text="Update Profile"
-        android:textColor="@color/fontColor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/updateButton"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:padding="0dp"
+            android:layout_margin="0dp"
+            android:background="@color/green"
+            android:text="Update Profile"
+            android:textColor="@color/fontColor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

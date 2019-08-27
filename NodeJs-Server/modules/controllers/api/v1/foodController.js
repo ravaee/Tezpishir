@@ -12,8 +12,6 @@ class FoodController extends Controller {
 
     list(req, res) {
 
-        this.sleep(2000);
-
         let pageNo = req.query.no
         let count = req.query.count
 

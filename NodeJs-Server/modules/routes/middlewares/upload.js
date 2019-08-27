@@ -18,6 +18,15 @@ module.exports = {
         filename: function (req, file, cb) {
             cb(null, Date.now() + path.extname(file.originalname))
         }
+    }),
+    setUser: multer.diskStorage({
+
+        destination: function (req, file, cb) {
+            cb(null, './modules/public/uploads/images/user')
+        },
+        filename: function (req, file, cb) {
+            cb(null, Date.now() + path.extname(file.originalname))
+        }
     })
 }
 

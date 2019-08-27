@@ -3,6 +3,9 @@ package com.git.ravaee.tezpishir.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -28,6 +31,8 @@ import com.git.ravaee.tezpishir.model.Food;
 import com.git.ravaee.tezpishir.model.Group;
 import com.git.ravaee.tezpishir.model.response.FoodResponse;
 import com.git.ravaee.tezpishir.root.App;
+import com.git.ravaee.tezpishir.viewModel.food.FoodViewModel;
+import com.git.ravaee.tezpishir.viewModel.food.FoodViewModelFactory;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.util.List;
@@ -158,43 +163,30 @@ public class FoodsActivity extends AppCompatActivity {
 
         this.pageNumber = pageNumber;
 
-        app.getFoodService().getFoodList(app.getSession().getToken(),group.getId(),pageNumber,count)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<FoodResponse>() {
-                    @Override
-                    public void onCompleted() {
 
-                    }
+        FoodViewModel foodViewModel = ViewModelProviders.of(this,new FoodViewModelFactory(app)).get(FoodViewModel.class);
+        foodViewModel.getFoodList(group,pageNumber,count).observe(this, foodResponse -> {
 
-                    @Override
-                    public void onError(Throwable e) {
-                        refreshLayout.setRefreshing(false);
-                        Toast.makeText(app.getApplicationContext(), "Check your Internet Connection", Toast.LENGTH_SHORT).show();
-                    }
+            refreshLayout.setRefreshing(false);
 
-                    @Override
-                    public void onNext(FoodResponse foodResponse) {
-                        refreshLayout.setRefreshing(false);
+            if(foodResponse.getErrors().size() > 0){
+                Toast.makeText(app.getApplicationContext(), foodResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-                        if(foodResponse.getErrors().size() > 0){
-                            Toast.makeText(app.getApplicationContext(), foodResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                            return;
-                        }
+            if(pageNumber > 1){
+                foodBind.getFoods().remove(foodBind.getFoods().size() - 1);
+                int scrollPosition = foodBind.getFoods().size();
+                foodAdapter.notifyItemRemoved(scrollPosition);
 
-                        if(pageNumber > 1){
-                            foodBind.getFoods().remove(foodBind.getFoods().size() - 1);
-                            int scrollPosition = foodBind.getFoods().size();
-                            foodAdapter.notifyItemRemoved(scrollPosition);
+                foodBind.getFoods().addAll(foodResponse.getFoodBind().getFoods());
 
-                            foodBind.getFoods().addAll(foodResponse.getFoodBind().getFoods());
+            }else{
+                foodBind = foodResponse.getFoodBind();
+            }
+            updateUI();
 
-                        }else{
-                            foodBind = foodResponse.getFoodBind();
-                        }
-                        updateUI();
-                    }
-                });
+        });
     }
 
 }

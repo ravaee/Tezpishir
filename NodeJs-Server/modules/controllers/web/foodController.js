@@ -79,7 +79,6 @@ class FoodController extends Controller {
                             return res.redirect('./create')
                         }
                     })
-
                 } else {
                     this.Bundle.setBundle(req, null, ["No Picture choosed."], "Check the Errors Bellow.")
                     return res.redirect('./create')

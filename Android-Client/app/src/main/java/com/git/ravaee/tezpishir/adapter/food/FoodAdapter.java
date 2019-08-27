@@ -113,7 +113,6 @@ public class FoodAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private void showLoadingView(LoadingViewHolder viewHolder, int position) {
         //ProgressBar would be displayed
-        Toast.makeText(context, "GOTBAZAN NEMIMIRAND", Toast.LENGTH_SHORT).show();
     }
 
     private void populateItemRows(FoodViewHolder foodViewHolder, int i) {

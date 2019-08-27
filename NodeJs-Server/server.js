@@ -6,6 +6,10 @@ const expressValidator = require('express-validator')
 const passport = require('passport')
 const path = require('path')
 global.config = require('./modules/utilities/config')
+var cors = require('cors')
+
+ 
+app.use(cors())
 
 // Connect to DB
 mongoose.connect('mongodb://127.0.0.1/test', { useNewUrlParser: true })
@@ -14,8 +18,9 @@ mongoose.set('useFindAndModify', false);
 app.set('view engine', 'ejs');
 app.set('views', __dirname + 'modules/views');
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json({ type: 'application/json' }))
+
 app.use(expressValidator())
 app.use(passport.initialize());
 app.use(express.static(path.resolve('modules/public')))

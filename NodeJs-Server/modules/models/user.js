@@ -13,6 +13,7 @@ const UserSchema = new Schema({
     experience: { type: String, required: false, default: null },
     areaOfService: { type: String, required: false, default: null },
     image: { type: String, required: false, default: null },
+    uploadImage: { type: String, required: false, default: null },
     foods: [{ type: Schema.Types.ObjectId, ref: 'Food' }],
     favorites: [{ type: Schema.Types.ObjectId, ref: 'Food' }],
     googleId: { type: String, required: true}

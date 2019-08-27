@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-    port: 8000,
+    port: 3000,
     auth_data: { 
         googleAuth: {
             clientID: '624101718624-1sm3potngau4se1tokrhu9tabjbflo18.apps.googleusercontent.com',

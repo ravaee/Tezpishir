@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.git.ravaee.tezpishir.R;
 import com.git.ravaee.tezpishir.model.response.SignInResponse;
 import com.git.ravaee.tezpishir.root.App;
@@ -54,6 +56,7 @@ public class SigninActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+
         if (requestCode == 9001) {
 
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
@@ -91,15 +94,18 @@ public class SigninActivity extends AppCompatActivity {
 
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
+
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
             if(account != null){
+
                 signInAndGetJWToken(account);
             }
 
         } catch (ApiException e) {
 
             updateUI(null);
+            Log.e(TAG, "handleSignInResult: " + e.toString());
         }
     }
 

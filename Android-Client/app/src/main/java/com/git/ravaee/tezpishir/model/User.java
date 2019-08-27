@@ -1,10 +1,11 @@
 package com.git.ravaee.tezpishir.model;
 
+import com.git.ravaee.tezpishir.utility.Config;
 import com.google.gson.annotations.SerializedName;
 
 public class User {
 
-    @SerializedName("id")
+    @SerializedName("_id")
     private String id;
 
     @SerializedName("name")
@@ -30,6 +31,12 @@ public class User {
 
     @SerializedName("areaOfService")
     private String areaOfService;
+
+    @SerializedName("phoneNumber")
+    private String phoneNumber;
+
+    @SerializedName("uploadImage")
+    private String uploadImage;
 
 
     public String getNickName() {
@@ -65,6 +72,7 @@ public class User {
     }
 
     public String getImage() {
+
         return image;
     }
 
@@ -95,4 +103,16 @@ public class User {
     public String getAreaOfService() { return areaOfService; }
 
     public void setAreaOfService(String areaOfService) { this.areaOfService = areaOfService; }
+
+    public String getPhoneNumber() { return phoneNumber; }
+
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+
+    public String getUploadImage() {
+        return Config.SERVER_PUBLIC_URL() + "uploads/images/user/" + uploadImage;
+    }
+
+    public void setUploadImage(String uploadImage) {
+        this.uploadImage = uploadImage;
+    }
 }
